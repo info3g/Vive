@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>success</title>
+	<style type="text/css">
+		#nik{
+			color:green;
+		}
+	</style>
+</head>
+<body>
+	{% if data5 %}
+	<script type="text/javascript">
+		alert("Something went wrong please try again later")
+	</script>
+	{% endif %}
+{% if data1 %}
+<h1 id="nik"> your video is sucessfully scheduled on your channel</h1>
+{{ data1 }}
+{% endif %}
+</body>
+</html>

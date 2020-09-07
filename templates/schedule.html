@@ -1,0 +1,79 @@
+
+        {% extends 'dash.html' %}
+        {% block content %}
+{% if data5 %}
+    <script type="text/javascript">
+        alert("Something went wrong please try again later")
+    </script>
+    {% endif %}
+        <form class="content_my_form" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+
+<h1>Schedule Video on channel</h1>
+  
+        
+       
+    
+    <div class="form-group">
+   <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <label class="col-md-12 control-label">
+                    Publishing_channel_Name
+                    </label>
+                </div>
+
+
+
+                <div class="col-md-12">
+        <select id="channel" name="channel">
+            {% for key, values in data1.items %}
+    <option value="{{key}}">{{key}}</option>
+ {% endfor %}
+
+  </select>
+            </div>
+            </div>
+        </div>
+  
+
+  
+
+
+
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <label class="col-md-12 control-label">
+                    Video_GUID
+                    </label>
+                </div>
+                <div class="col-md-12">
+                    <input type="text" name="Video_GUID" placeholder="Video_GUID" required>
+                </div>
+            </div>
+        </div>
+    
+
+
+ <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <label class="col-md-12 control-label">
+Date Time of schedule
+                    </label>
+                </div>
+                <div class="col-md-12">
+                    <input type=datetime-local value="2013-10-24T20:36:00" step="1" name="datetime">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+   
+    <input type="submit" value="submit" class="btn btn-primary">
+</form>
+
+  {% endblock %}
