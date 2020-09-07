@@ -25,7 +25,7 @@ SECRET_KEY = 'xxs+-k9z-c(q0!6&mhs#tr@batw)+f@n=tkd739&k^7v3$v6$1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*','vivenetwork.herokuapp.com/']
 
 
 # Application definition
