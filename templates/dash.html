@@ -14,20 +14,30 @@
     
     <div class="wrapper d-flex align-items-stretch">
       <nav id="sidebar" class="active">
-        <p class="logo">Publishing API</h1>
+        <div class="logo"> <img src="/static/images/logo.png" alt="logo"></div>
         <ul class="list-unstyled components mb-5">
          
-          
           <li>
-            <a href="/schedule/"><span class="fa fa-user" ></span>Publishing</a>
+            <a href="/home/"><span class="fa fa-user"></span>Home</a>
           </li>
+
           <li>
             <a href="/multiSchedule/"><span class="fa fa-user"></span>Multiple Publishing</a>
+          </li>
+
+
+          <li>
+            <a href="/multiSchedule/"><span class="fa fa-user" ></span>Publishing</a>
+          </li>
+          <li>
+            <a href="/logout/"><span class="fa fa-user"></span>Logout</a>
           </li>
          
         </ul>
 
         
+      </nav>
+
       </nav>
 
         <!-- Page Content  -->
@@ -36,23 +46,36 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <div class="container-fluid">
 
-    
+  
+<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="nav navbar-nav ml-auto" style="color:blue;">
-               
+              <ul class="nav navbar-nav ml-auto new-navright" style="color:blue;">
+               <li class="nav-item">
+                    <a class="nav-link user_active" href="#">Hi {{user.username}}</a>
+                </li>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/home/">Home</a>
+                </li>
                 <li class="nav-item" style="color:blue !important;">
                     <a class="nav-link"  href="/schedule/">Publishing</a>
                 </li>
                 <li class="nav-item" style="color:blue !important;">
                     <a class="nav-link" href="/multiSchedule/">Multiple Publishing</a>
                 </li>
+              
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout/">Logout</a>
+                </li>
+
               </ul>
             </div>
           </div>
         </nav>
 
-        <h2 class="mb-4"></h2>
+        
 <div class=top>
 <div  class='amit'>
 
@@ -62,6 +85,37 @@
     </div>
    
 </div>
+<section class="footer bg-secondary">
+  <div class="container-fluid">
+     
+   <div class="col-sm-12">
+       <div class="row">
+          <div class="col-sm-6 copy-right">© 2013-2020. VIVE Network, LLC | All rights reserved. </div>
+          <div class="col-sm-6">
+            <ul class="top-bar-sns">
+            <li>
+            <a target="_blank" href="https://www.linkedin.com/company/vive-tv-network/" data-placement="top" data-toggle="tooltip" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+            </li>
+            <li>
+            <a target="_blank" href="https://twitter.com/vivetv_network/" data-placement="top" data-toggle="tooltip" title="Twitter"><i class="fa fa-twitter"></i></a>
+            </li>
+            <li>
+            <a target="_blank" href="https://www.instagram.com/vivetvnetwork/" data-placement="top" data-toggle="tooltip" title="Instagram"><i class="fa fa-instagram"></i></a>
+            </li>
+            <li>
+            <a target="_blank" href="https://www.facebook.com/VIVETVNetwork/" data-placement="top" data-toggle="tooltip" title="Facebook"><i class="fa fa-facebook"></i></a>
+            </li>
+            <li>
+            <a target="_blank" href="https://www.youtube.com/c/VIVENetwork" data-placement="top" data-toggle="tooltip" title="YouTube"><i class="fa fa-youtube"></i></a>
+            </li>
+            </ul>
+                      
+        </div>
+       </div>
+   </div>
+
+  </div>
+  </section>
     <script src="/static/js/jquery.min.js"></script>
     <script src="/static/js/popper.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>

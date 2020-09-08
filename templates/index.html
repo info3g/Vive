@@ -1,70 +1,7 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <title>Publishing API</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/static/css/style.css">
-  </head>
-  <body>
-    
-    <div class="wrapper d-flex align-items-stretch">
-      <nav id="sidebar" class="active">
-        <p class="logo">Publishing API</h1>
-        <ul class="list-unstyled components mb-5">
-         
-          <li>
-            <a href="/signin/"><span class="fa fa-user"></span>signin</a>
-          </li>
-
-          <li>
-            <a href="/signup/"><span class="fa fa-user"></span>signup</a>
-          </li>
 
 
-         
-        </ul>
-
-        
-      </nav>
-
-        <!-- Page Content  -->
-      <div id="content" class="p-4 p-md-5">
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container-fluid">
-
-    
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="nav navbar-nav ml-auto" style="color:blue;">
-               <li class="nav-item">
-                    <a class="nav-link" href="/signin/">signin</a>
-                </li>
-                  <li class="nav-item active">
-                    <a class="nav-link" href="/signup/">signup</a>
-                </li>
-           
-                
-                
-            
-
-              </ul>
-            </div>
-          </div>
-        </nav>
-
-        <h2 class="mb-4"></h2>
-<div class=top>
-<div  class='amit'>
-
-
-
-
+     {% extends 'base.html' %}
+        {% block content %}
 
 
 <h1>Welcome</h1>
@@ -73,13 +10,4 @@
 
 
 
-
-     </div>
-   
-</div>
-    <script src="/static/js/jquery.min.js"></script>
-    <script src="/static/js/popper.js"></script>
-    <script src="/static/js/bootstrap.min.js"></script>
-    <script src="/static/js/main.js"></script>
-  </body>
-
+   {% endblock %}
