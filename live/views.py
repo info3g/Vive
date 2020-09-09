@@ -209,7 +209,7 @@ from django.http import HttpResponse, Http404
 def download(request):
     file_path = os.path.join(settings.MEDIA_ROOT, './')
     if os.path.exists(file_path):
-        with open('input.xlsx','rb') as fh:
+        with open('./media/input.xlsx','rb') as fh:
             response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
             response['Content-Disposition'] = 'inline; filename=sample_input.xlsx'
             return response
