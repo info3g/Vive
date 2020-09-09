@@ -1,8 +1,7 @@
 
         {% extends 'dash.html' %}
         {% block content %}
-      
-
+      <a href="/download/" class="btn btn-primary">Download sample excel file</a>
         <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
 <h1>Publishing Multiple Schedule</h1>
@@ -21,7 +20,7 @@
     <div class="form-group">
 
 <label class="col-md-4 control-label label-center">
-<input type="file" name="fileToUpload" id="fileToUpload" required>
+<input type="file" name="fileToUpload2" id="fileToUpload" required>
 </label>
         <!--<div class="col-md-6">
                 </div>-->

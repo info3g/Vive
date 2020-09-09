@@ -16,7 +16,12 @@
 	{% endif %}
 {% if data1 %}
 <h1 id="nik"> your video is sucessfully scheduled on your channel</h1>
-{{ data1 }}
+{% for i in data1 %}
+{{ i }}
+</br>
+</br>
+
+{% endfor %}
 {% endif %}
 </body>
 </html>

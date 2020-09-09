@@ -12,7 +12,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from live.forms import *
-
+import pandas as pd
 
 @login_required
 def home(request):
@@ -99,37 +99,46 @@ def schedule(request):
 
 
 def multiSchedule(request):
+    import urllib2, urllib, zlib, hmac, hashlib, time, json
+    from time import strftime, gmtime
+    ROOT_URL = 'http://services.uplynk.com'
+    OWNER = '15924b0521f34689810d803be689a3ac' # SE account
+    SECRET = 'sw395AXyuIysSgyYNdmd9bzKWQc33+c5Huy2mvCw' # CHANGE THIS TO YOUR SECRET API KEY
+    def Call(uri, **msg):
+        msg['_owner'] = OWNER
+        msg['_timestamp'] = int(time.time())
+        msg = json.dumps(msg)
+        msg = zlib.compress(msg, 9).encode('base64').strip()
+        print "msg",msg
+        sig = hmac.new(SECRET.encode('utf-8'), msg.encode('utf-8'), hashlib.sha256).hexdigest()
+        print "sig",sig
+        body = urllib.urlencode(dict(msg=msg, sig=sig))
+        print "body",body
+        return json.loads(urllib2.urlopen(ROOT_URL + uri, body).read())
+    fill=[]
     if request.method == 'POST':
-        excel_file = request.FILES["fileToUpload"]
-        print("1111111111111111111111",excel_file)
-        import urllib2, urllib, zlib, hmac, hashlib, time, json
-        from time import strftime, gmtime
-
-        ROOT_URL = 'http://services.uplynk.com'
-        OWNER = '15924b0521f34689810d803be689a3ac' # SE account
-        SECRET = 'sw395AXyuIysSgyYNdmd9bzKWQc33+c5Huy2mvCw' # CHANGE THIS TO YOUR SECRET API KEY
-
-        def Call(uri, **msg):
-            msg['_owner'] = OWNER
-            msg['_timestamp'] = int(time.time())
-            msg = json.dumps(msg)
-            msg = zlib.compress(msg, 9).encode('base64').strip()
-            sig = hmac.new(SECRET, msg, hashlib.sha256).hexdigest()
-            body = urllib.urlencode(dict(msg=msg, sig=sig))
-            return json.loads(urllib2.urlopen(ROOT_URL + uri, body).read())
-
-
-        ts = time.time()
-        now = strftime("%Y-%m-%d %H:%M:%S", gmtime(ts))
-
+        excel_file = request.FILES["fileToUpload2"]
+        print(excel_file)
+        df=pd.read_excel(excel_file)
+        for chanal3 , video3 , time3 in zip(df['channel_guid'],df['video_guid'],df['datetime']):
+            print(str(chanal3), str(video3), str(time3))
         # Channel scheduler BETA
-        schedule1 = []
-        for i in range(1000):
-            schedule1.append('aad61071a6fd4556b8e75f093c58db7b') #asset GUID
-            break
-
+            schedule1 = ["0"]
+            schedule1[0]=str(video3)
+            datetime=str(time3)
+            print "datetime",datetime
+            data2=Call('/api2/channel/schedule/update', id=str(chanal3), schedule=[{"type":"asset", "asset": schedule1, "start": "{}".format(datetime)}])
+            print(data2)
+            try:
+                d=data2['schedule']
+            except:
+                print("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnno")
+                return render(request,"success.html",{"data5":"true"})
+            schedule3='\n'+(str(d))
+            print('schedule3',schedule3)
+            fill.append(schedule3)
+        return render(request,"success.html",{"data1":fill})
         # Channel scheduler BETA
-        print(Call('/api2/channel/schedule/update', id='a39650711a294f40a8728c85476b16d9', schedule=[{"type":"asset", "asset": schedule1, "start": "{}".format(now)}]))
     return render(request,"multiSchedule.html")
 
 
@@ -187,3 +196,21 @@ def login_user(request):
 def user_logout(request):
     logout(request)
     return redirect('/signin/')
+
+
+
+
+
+
+import os
+from django.conf import settings
+from django.http import HttpResponse, Http404
+
+def download(request):
+    file_path = os.path.join(settings.MEDIA_ROOT, './')
+    if os.path.exists(file_path):
+        with open('input.xlsx','rb') as fh:
+            response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
+            response['Content-Disposition'] = 'inline; filename=sample_input.xlsx'
+            return response
+    raise Http404
