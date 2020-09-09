@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'xxs+-k9z-c(q0!6&mhs#tr@batw)+f@n=tkd739&k^7v3$v6$1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =     False
+DEBUG =     True
 
 ALLOWED_HOSTS = ['*','vivenetwork.herokuapp.com/']
 
