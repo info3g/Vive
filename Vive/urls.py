@@ -25,7 +25,7 @@ urlpatterns = [
     url(r'^logout/',views.user_logout, name='user_logout'),
     url(r'^home/', views.home, name="home"),
     url(r'^schedule/', views.schedule, name="schedule"),
-    url(r'^index/', views.index, name="index"),
+    url(r'^$', views.index, name="index"),
     url(r'^multiSchedule/', views.multiSchedule, name="multiSchedule"),
     url(r'^download/',views.download, name='download'),
 ]

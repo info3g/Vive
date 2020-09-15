@@ -19,18 +19,17 @@ def home(request):
     return render(request,"Home.html")
 
 
-
 def index(request):
     return render(request,"index.html")
 
 
-
+@login_required
 def schedule(request):
     import urllib2, urllib, zlib, hmac, hashlib, time, json
     from time import strftime, gmtime
     ROOT_URL = 'http://services.uplynk.com'
-    OWNER = '15924b0521f34689810d803be689a3ac' # SE account
-    SECRET = 'sw395AXyuIysSgyYNdmd9bzKWQc33+c5Huy2mvCw' # CHANGE THIS TO YOUR SECRET API KEY
+    OWNER = '125d57de472c425384f90cdc781c1188' # SE account
+    SECRET = 'Aa/YoPaVxYQ5kHHfPL5/lskX+386epEyKl7AKhtT' # CHANGE THIS TO YOUR SECRET API KEY
 
     def Call(uri, **msg):
         msg['_owner'] = OWNER
@@ -97,13 +96,13 @@ def schedule(request):
     return render(request,"schedule.html",{"data1":channels_name})
 
 
-
+@login_required
 def multiSchedule(request):
     import urllib2, urllib, zlib, hmac, hashlib, time, json
     from time import strftime, gmtime
     ROOT_URL = 'http://services.uplynk.com'
-    OWNER = '15924b0521f34689810d803be689a3ac' # SE account
-    SECRET = 'sw395AXyuIysSgyYNdmd9bzKWQc33+c5Huy2mvCw' # CHANGE THIS TO YOUR SECRET API KEY
+    OWNER = '125d57de472c425384f90cdc781c1188' # SE account
+    SECRET = 'Aa/YoPaVxYQ5kHHfPL5/lskX+386epEyKl7AKhtT' # CHANGE THIS TO YOUR SECRET API KEY
     def Call(uri, **msg):
         msg['_owner'] = OWNER
         msg['_timestamp'] = int(time.time())
@@ -206,6 +205,7 @@ import os
 from django.conf import settings
 from django.http import HttpResponse, Http404
 
+@login_required
 def download(request):
     file_path = os.path.join(settings.MEDIA_ROOT, './')
     if os.path.exists(file_path):
