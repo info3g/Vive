@@ -28,7 +28,7 @@ def schedule(request):
     import urllib2, urllib, zlib, hmac, hashlib, time, json
     from time import strftime, gmtime
     ROOT_URL = 'http://services.uplynk.com'
-    OWNER = '125d57de472c425384f90cdc781c1188' # SE account
+    OWNER = '2cd55c2b15804dd087c0abacc4735370' # SE account
     SECRET = 'Aa/YoPaVxYQ5kHHfPL5/lskX+386epEyKl7AKhtT' # CHANGE THIS TO YOUR SECRET API KEY
 
     def Call(uri, **msg):
@@ -101,7 +101,7 @@ def multiSchedule(request):
     import urllib2, urllib, zlib, hmac, hashlib, time, json
     from time import strftime, gmtime
     ROOT_URL = 'http://services.uplynk.com'
-    OWNER = '125d57de472c425384f90cdc781c1188' # SE account
+    OWNER = '2cd55c2b15804dd087c0abacc4735370' # SE account
     SECRET = 'Aa/YoPaVxYQ5kHHfPL5/lskX+386epEyKl7AKhtT' # CHANGE THIS TO YOUR SECRET API KEY
     def Call(uri, **msg):
         msg['_owner'] = OWNER
